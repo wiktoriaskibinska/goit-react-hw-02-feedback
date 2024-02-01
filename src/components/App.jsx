@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Feedback from './feedback/Feedback';
 import Statistics from './statistics/Statistics';
 import Section from './section/Section';
+import Notification from './notification/Notification';
 
 export class App extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export class App extends Component {
           gap: 30,
           fontSize: 40,
           color: '#010101',
+          backgroundColor: 'pink',
         }}
       >
         <Section title="Leave Feedback:)!">
@@ -54,13 +56,17 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={totalFeedback}
-            positivePercentage={positivePercentage}
-          />
+          {totalFeedback > 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={totalFeedback}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </div>
     );
