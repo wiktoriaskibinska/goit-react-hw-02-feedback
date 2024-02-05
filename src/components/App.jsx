@@ -38,36 +38,55 @@ export class App extends Component {
     const positivePercentage = countPositivePercentage();
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 30,
-          fontSize: 40,
-          color: '#010101',
-          backgroundColor: 'pink',
-        }}
-      >
-        <Section title="Leave Feedback:)!">
-          <Feedback
-            options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={this.handleClick}
-          />
-        </Section>
-        <Section title="Statistics">
-          {totalFeedback > 0 ? (
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={totalFeedback}
-              positivePercentage={positivePercentage}
+      <div>
+        <h1
+          style={{
+            color: '#4b3621',
+            backgroundColor: 'pink',
+            margin: 0,
+            paddingTop: 50,
+            textAlign: 'center',
+            fontSize: 70,
+            fontFamily: 'Snell Roundhand',
+            fontStyle: 'italic',
+          }}
+        >
+          ESPRESSO café
+        </h1>
+        <div
+          style={{
+            fontFamily: 'Snell Roundhand',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            padding: '0 100px 0 100px',
+            gap: 30,
+            fontSize: 40,
+            color: '#ffffff',
+            backgroundColor: 'pink',
+            paddingBottom: 70,
+          }}
+        >
+          <Section title="Leave Feedback ♥!">
+            <Feedback
+              options={['good', 'neutral', 'bad']}
+              onLeaveFeedback={this.handleClick}
             />
-          ) : (
-            <Notification message="There is no feedback" />
-          )}
-        </Section>
+          </Section>
+          <Section title="Statistics">
+            {totalFeedback > 0 ? (
+              <Statistics
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={totalFeedback}
+                positivePercentage={positivePercentage}
+              />
+            ) : (
+              <Notification message="There is no feedback" />
+            )}
+          </Section>
+        </div>
       </div>
     );
   }
